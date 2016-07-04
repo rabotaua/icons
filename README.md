@@ -1,3 +1,5 @@
+To build font simply run `grunt`
+
 [grunt-webfont](https://github.com/sapegin/grunt-webfont)
 
 Requirements
@@ -14,4 +16,5 @@ macOS
 -----
 
 	brew install ttfautohint fontforge --with-python
+	sudo npm install -g grunt-cli
 
