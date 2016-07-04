@@ -1,0 +1,9 @@
+{
+  "version": "2.0.0",
+  "name": "RabotaUA.Icons",
+  "private": true,
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-webfont": "^1.4.0"
+  }
+}

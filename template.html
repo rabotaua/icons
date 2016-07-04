@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title><%= fontBaseName %></title>
+    <style>
+        <% space = "20px" %>
+        html, body {
+            font: normal normal 300 15px/25px'Segoe UI Light', 'Helvetica Neue', sans-serif;
+            color: #333;
+            background:#F7F7F7;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            padding: <%= space %>;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            column-count: 5;
+            column-gap: <%= space %>;
+        }
+
+        .icons li {
+            display: flex;
+            padding-bottom: <%= space %>;
+            cursor: pointer;
+            page-break-inside: avoid;
+            break-inside: avoid-column;
+            -webkit-column-break-inside: avoid;
+        }
+
+        [data-r]:after {
+            content: attr(data-r);
+            margin-left: 5px;
+            flex: 1;
+        }
+
+        header,
+        label,
+        .sizes, .r.r_16, .r.r_22, .r.r_32, .r.r_48, .r.r_72 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .r_16 {font-size: 16px; width: 16px}
+        .r_22 {font-size: 22px; width: 22px}
+        .r_32 {font-size: 32px; width: 32px}
+        .r_48 {font-size: 48px; width: 48px}
+        .r_72 {font-size: 72px; width: 72px}
+
+        <%= styles %>
+
+        .r_logo {
+            display: inline-block;
+            width: 168px;
+            text-align: left;
+            opacity: .5;
+        }
+
+        .sizes {
+            margin: <%= space %> 0;
+        }
+
+        .sizes .r {
+            margin: 0 <%= space %>;
+        }
+
+        header {
+            justify-content: space-between;
+        }
+
+        #toggle_backgrounds,
+        #toggle_backgrounds:not(:checked) ~ header label[for="toggle_backgrounds"] .r_checked,
+        #toggle_backgrounds:checked ~ header label[for="toggle_backgrounds"] .r_unchecked {
+            display: none;
+        }
+
+        #toggle_backgrounds:checked ~ .sizes,
+        #toggle_backgrounds:checked ~ .sizes .r,
+        #toggle_backgrounds:checked ~ .icons li:after,
+        #toggle_backgrounds:checked ~ .icons .r {
+            background: rgba(0, 0, 0, .075);
+        }
+
+        @media only screen and (max-width: 1200px) {
+            body {
+                max-width: 960px;
+            }
+
+            .icons {
+                column-count: 4;
+            }
+        }
+
+        @media only screen and (max-width: 800px) {
+            .icons {
+                column-count: 3;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .icons {
+                column-count: 1;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .r.r_32.r_logo, .sizes {
+                display: none;
+            }
+
+            header {
+                margin-bottom: <%= space%>;
+            }
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="toggle_backgrounds" />
+    <header>
+        <i class="r r_logo r_32"></i>
+        <label for="toggle_backgrounds" data-r="Show background"><i class="r r_unchecked"></i><i class="r r_checked"></i></label>
+    </header>
+    <div class="sizes">
+        <i class="<%= baseClass %> <%= glyphs[0] %> r_16" title="16px"></i>
+        <i class="<%= baseClass %> <%= glyphs[0] %> r_22" title="22px"></i>
+        <i class="<%= baseClass %> <%= glyphs[0] %> r_32" title="32px"></i>
+        <i class="<%= baseClass %> <%= glyphs[0] %> r_48" title="48px"></i>
+        <i class="<%= baseClass %> <%= glyphs[0] %> r_72" title="72px"></i>
+    </div>
+    <ul class="icons"><% for (var i = 0; i < glyphs.length; i++) { var glyph = glyphs[i]; if (glyph != 'r_logo') { %>
+    <li data-r="<%= glyph %>"><i class="<%= baseClass %> <%= glyph %> r_22"></i></li>
+    <% }} %></ul>
+    <script>
+        var r16 = document.querySelector('.sizes .r_16'),
+            r22 = document.querySelector('.sizes .r_22'),
+            r32 = document.querySelector('.sizes .r_32'),
+            r48 = document.querySelector('.sizes .r_48'),
+            r72 = document.querySelector('.sizes .r_72');
+
+        document.querySelector('.icons').addEventListener('click', function (event) {
+            var icon = event.target.getAttribute('data-r');
+
+            if (!icon) return;
+
+            r16.className = 'r r_16 ' + icon;
+            r22.className = 'r r_22 ' + icon;
+            r32.className = 'r r_32 ' + icon;
+            r48.className = 'r r_48 ' + icon;
+            r72.className = 'r r_72 ' + icon;
+        });
+    </script>
+</body>
+</html>
