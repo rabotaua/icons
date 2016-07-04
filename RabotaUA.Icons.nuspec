@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>RabotaUA.Icons</id>
+        <version>2.0.0</version>
+        <title>Icons font for rabota.ua</title>
+        <authors>AlexandrM, VitaliyM, PavelH</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Icons font for rabota.ua</description>
+    </metadata>
+    <files>
+        <file src="dist\index.html" target="index.html" />
+        <file src="dist\_r.scss" target="_r.scss" />
+        <file src="dist\r.eot" target="r.eot" />
+        <file src="dist\r.ttf" target="r.ttf" />
+        <file src="dist\r.woff" target="r.woff" />
+    </files>
+</package>
