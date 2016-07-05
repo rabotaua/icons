@@ -10,7 +10,7 @@
     </metadata>
     <files>
         <file src="dist\index.html" target="index.html" />
-        <file src="dist\_r.scss" target="_r.scss" />
+        <file src="dist\r.css" target="r.css" />
         <file src="dist\r.eot" target="r.eot" />
         <file src="dist\r.ttf" target="r.ttf" />
         <file src="dist\r.woff" target="r.woff" />
